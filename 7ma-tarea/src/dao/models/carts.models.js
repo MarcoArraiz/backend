@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const cartSchema = new Schema({
     products: {
@@ -21,6 +22,9 @@ const cartSchema = new Schema({
     }
 
 })
+// añado el middleware de paginacion
+cartSchema.plugin(mongoosePaginate)
+
 //Parametro 1:Nombre coleccion - Parametro 2: Schema }
 
 cartSchema.pre('findOne', function () {

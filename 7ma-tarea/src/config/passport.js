@@ -3,13 +3,39 @@ import passport from 'passport';
 import GithubStrategy from 'passport-github2';
 import { hashPassword, validatePassword } from '../utils/bcrypt.js';
 import { userManager } from '../dao/models/userManager.js';
+import jwt from 'passport-jwt';
+import dotenv from 'dotenv';
 
 
 
 //Definir la estrategia local
 const LocalStrategy = local.Strategy;
+const JWTStrategy = jwt.Strategy
+const ExtractJWT = jwt.ExtractJwt //Extrar de las cookies el token
 
 const InitializePassport = () => {
+
+    const cookieExtractor = req => {
+        const token = req.cookies.jwtCookie ? req.cookies.jwtCookie : null
+
+        console.log("cookieExtractor", token)
+
+        return token
+
+    }
+
+    passport.use('jwt', new JWTStrategy({
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]), //El token va a venir desde cookieExtractor
+        secretOrKey: process.env.JWT_SECRET
+    }, async (jwt_payload, done) => { //jwt_payload = info del token (en este caso, datos del cliente)
+        try {
+            return done(null, jwt_payload)
+        } catch (error) {
+            return done(error)
+        }
+
+    }))
+
     //Definir la estrategia local
     passport.use('signup', new LocalStrategy({
         usernameField: 'email',
@@ -32,10 +58,10 @@ const InitializePassport = () => {
             const hashPass = await hashPassword(password);
             console.log(hashPass);
             const createUser = await userManager.create({ 
-                first_name: first_name,
-                last_name: last_name,
-                email: email,
-                age: age,
+                first_name,
+                last_name,
+                email,
+                age,
                 password: hashPass
             });
             return done(null, createUser, { message: 'Usuario creado exitosamente.' });
@@ -71,7 +97,6 @@ const InitializePassport = () => {
                 return done(error);
             }
     }))
-
 
     passport.use('github', new GithubStrategy({
         clientID: process.env.CLIENT_ID,
