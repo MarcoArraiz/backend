@@ -28,13 +28,13 @@ export const sendOrderConfirmationEmail = async (orderCode, products, totalAmoun
         const filePath = path.join(__dirname, '../public/html/orderConfirmation.html');
         let orderConfirmationHtml = fs.readFileSync(filePath, 'utf-8');
 
-        let productsHtml = products.map(product =>
+        let productsHtml = products.map(product => 
             `<tr><td>${product.title}</td><td>${product.quantity}</td></tr>`
         ).join('');
 
         orderConfirmationHtml = orderConfirmationHtml.replace('{{orderId}}', orderCode)
-            .replace('{{productsRows}}', productsHtml)
-            .replace('{{totalAmount}}', totalAmount);
+                                                     .replace('{{productsRows}}', productsHtml)
+                                                     .replace('{{totalAmount}}', totalAmount);
 
         let mailOptions = {
             from: 'TaDa',
