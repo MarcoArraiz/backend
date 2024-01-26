@@ -75,7 +75,7 @@ function SignupForm() {
 
     /// FUNCION PARA LA VERIFICACION DEL CODIGO DE EMAIL
     const verifyCode = (code) => {
-        fetch('http://localhost:4000/api/users/verify-code', {
+        fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/users/verify-code', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

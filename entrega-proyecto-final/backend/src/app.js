@@ -36,7 +36,12 @@ const specs = swaggerjsdoc(swaggerOptions);
 
 
 
+<<<<<<< HEAD
 // Permitir solicitudes desde tu frontend en Render
+=======
+const whiteList = ['https://proyecto-final-coderhouse-frontend.onrender.com/login', 'https://proyecto-final-coderhouse-vhni.onrender.com'];
+
+>>>>>>> parent of 20cf2d3 (Revert "cambio de rutas")
 const corsOptions = {
     origin: 'https://proyecto-final-coderhouse-frontend.onrender.com',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
