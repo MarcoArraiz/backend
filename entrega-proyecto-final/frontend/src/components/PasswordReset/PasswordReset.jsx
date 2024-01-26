@@ -20,7 +20,7 @@ const PasswordReset = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:4000/api/users/reset-password', {
+            const response = await fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/users/reset-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

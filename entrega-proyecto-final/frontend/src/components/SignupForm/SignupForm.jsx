@@ -32,7 +32,7 @@ function SignupForm() {
             return;
         }
         const data = { email, password, age, first_name, last_name };
-        fetch('http://localhost:4000/api/users/signup', {
+        fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/users/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ function SignupForm() {
 
     /// FUNCION PARA LA VERIFICACION DEL CODIGO DE EMAIL
     const verifyCode = (code) => {
-        fetch('http://localhost:4000/api/users/verify-code', {
+        fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/users/verify-code', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

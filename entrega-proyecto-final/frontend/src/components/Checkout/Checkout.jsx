@@ -23,7 +23,7 @@ const Checkout = () => {
                 const token = Cookies.get('jwtCookie');
                 const cart_id = jwtDecode(token).user.cart;
                 console.log('cart_id', cart_id);
-                const respuesta = await fetch(`http://localhost:4000/api/carts/${cart_id}`);
+                const respuesta = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/carts/${cart_id}`);
                 const datos = await respuesta.json();
                 console.log('datos', datos);
                 setDataCarrito(datos.payload);
@@ -44,7 +44,7 @@ const Checkout = () => {
                     const token = Cookies.get('jwtCookie');
                     const cart_id = jwtDecode(token).user.cart;
                     console.log('cart_id', cart_id);
-                    const respuesta = await fetch(`http://localhost:4000/api/carts/${cart_id}`);
+                    const respuesta = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/carts/${cart_id}`);
                     const datos = await respuesta.json();
                     console.log('datos', datos);
                     setDataCarrito(datos.payload);
@@ -88,7 +88,7 @@ const Checkout = () => {
 
                 try {
                     setIsLoading(true); // Mostrar animación de espera
-                    const response = await fetch(`http://localhost:4000/api/orders/${cart_id}`, {
+                    const response = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/orders/${cart_id}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ const NavBar = () => {
                 logout();
                 navigate('/login'); // Navegar al login
             }
-            const res = await axios.get('http://localhost:4000/api/sessions/logout', {
+            const res = await axios.get('https://proyecto-final-coderhouse-vhni.onrender.com/api/sessions/logout', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
