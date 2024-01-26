@@ -27,7 +27,7 @@ const ItemCard = ({_id,title,price,thumbnail,stock}) => {
         const cart = JSON.parse(atob(token.split('.')[1]));
         const cart_id = cart.user.cart;
 
-        let apiUrl = 'https://proyecto-final-coderhouse-vhni.onrender.com/api/carts/';
+        let apiUrl = 'http://localhost:4000/api/carts/';
         apiUrl +=`${cart_id}/products/`;
         apiUrl += `${_id}`;
         try {

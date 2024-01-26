@@ -18,12 +18,8 @@ const NavBar = () => {
                 logout();
                 navigate('/login'); // Navegar al login
             }
-<<<<<<< HEAD
 
-            // Cambiar la URL de la solicitud de logout a tu backend en Render
-=======
->>>>>>> parent of 20cf2d3 (Revert "cambio de rutas")
-            const res = await axios.get('https://proyecto-final-coderhouse-vhni.onrender.com/api/sessions/logout', {
+            const res = await axios.get('http://localhost:4000/api/sessions/logout', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`

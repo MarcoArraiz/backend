@@ -36,17 +36,18 @@ const specs = swaggerjsdoc(swaggerOptions);
 
 
 
-<<<<<<< HEAD
-// Permitir solicitudes desde tu frontend en Render
-=======
-const whiteList = ['https://proyecto-final-coderhouse-frontend.onrender.com/login', 'https://proyecto-final-coderhouse-vhni.onrender.com'];
+const whiteList = ['http://localhost:5173', 'http://localhost:4000'];
 
->>>>>>> parent of 20cf2d3 (Revert "cambio de rutas")
 const corsOptions = {
-    origin: 'https://proyecto-final-coderhouse-frontend.onrender.com',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
+    origin: (origin, callback) => {
+        if (whiteList.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true, // permite credenciales en cross-origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // métodos permitidos
 };
 
 
@@ -65,7 +66,7 @@ dotenv.config();
 const app = express()
 const PORT = 4000
 
-const server = app.listen(PORT, () => {
+const server =  app.listen(PORT, () => {
     console.log(`Server on Port ${PORT}`)
 })
 
@@ -80,18 +81,18 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.SIGNED_COOKIE))
 app.use(session({
-    store: MongoStore.create({
+    store: MongoStore.create({ 
         mongoUrl: process.env.MONGO_URL,
-        mongoOptions: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        },
+        mongoOptions: { 
+            useNewUrlParser: true, 
+            useUnifiedTopology: true 
+        }, 
         ttl: 120
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
-}))
+})) 
 InitializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
@@ -100,7 +101,7 @@ app.use(addLogger);
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 // RUTAS
-app.use('/api', apisRouter)
+app.use('/api',apisRouter)
 app.use(errorHandler)
 
 

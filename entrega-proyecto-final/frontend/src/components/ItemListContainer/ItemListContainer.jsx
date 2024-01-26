@@ -11,7 +11,7 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     // Definir la URL de la API. Ajusta esto según sea necesario
-    let apiUrl = 'https://proyecto-final-coderhouse-vhni.onrender.com/api/products';
+    let apiUrl = 'http://localhost:4000/api/products';
 
     // Añadir parámetros de categoría si existen
     if (idCategoria) {
