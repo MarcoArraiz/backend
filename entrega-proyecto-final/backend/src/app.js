@@ -36,7 +36,7 @@ const specs = swaggerjsdoc(swaggerOptions);
 
 
 
-const whiteList = ['https://proyecto-final-coderhouse-frontend.onrender.com/login', 'https://proyecto-final-coderhouse-vhni.onrender.com'];
+const whiteList = ['http://localhost:5173', 'http://localhost:4000'];
 
 const corsOptions = {
     origin: (origin, callback) => {
