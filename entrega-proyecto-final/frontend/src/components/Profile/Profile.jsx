@@ -40,7 +40,7 @@ const UpgradeToPremium = () => {
         const uid = jwtDecode(token).user._id;
 
         try {
-            const response = await fetch(`http://localhost:4000/api/users/${uid}/documents`, {
+            const response = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/users/${uid}/documents`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

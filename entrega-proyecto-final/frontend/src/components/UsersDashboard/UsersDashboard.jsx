@@ -34,7 +34,7 @@ const UsersDashboard = () => {
 
     const deleteUser = async (userId) => {
         try {
-            const response = await fetch(`http://localhost:4000/api/users/${userId}`, {
+            const response = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/users/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${Cookies.get('jwtCookie')}`

@@ -15,7 +15,7 @@ const Cart = () => {
             const token = Cookies.get('jwtCookie');
             const cart_id = jwtDecode(token).user.cart;
             console.log("cart_id", cart_id);
-            const respuesta = await fetch(`http://localhost:4000/api/carts/${cart_id}`);
+            const respuesta = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/carts/${cart_id}`);
             const datos = await respuesta.json();
             console.log("datos", datos);
             setDataCarrito(datos.payload);
@@ -32,7 +32,7 @@ const Cart = () => {
             const token = Cookies.get('jwtCookie');
             const cart_id = jwtDecode(token).user.cart;
             console.log("cart_id", cart_id);
-            const respuesta = await fetch(`http://localhost:4000/api/carts/${cart_id}/products/${id}`, {
+            const respuesta = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/carts/${cart_id}/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Cart = () => {
             console.log("Vaciar carrito...")
             const token = Cookies.get('jwtCookie');
             const cart_id = jwtDecode(token).user.cart;
-            const respuesta = await fetch(`http://localhost:4000/api/carts/${cart_id}`, {
+            const respuesta = await fetch(`https://proyecto-final-coderhouse-vhni.onrender.com/api/carts/${cart_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

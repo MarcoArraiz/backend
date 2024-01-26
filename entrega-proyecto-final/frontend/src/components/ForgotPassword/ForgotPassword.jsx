@@ -11,7 +11,7 @@ function ForgotPassword() {
         setIsLoading(true);
         try {
             // Llamada asincrónica a la API
-            fetch('http://localhost:4000/api/users/request-reset-password', {
+            fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/users/request-reset-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -58,7 +58,7 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:4000/api/sessions/login', {
+            const response = await fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/sessions/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ function Login() {
 
 
     const handleGithubLogin = () => {
-        fetch('http://localhost:4000/api/sessions/github')
+        fetch('https://proyecto-final-coderhouse-vhni.onrender.com/api/sessions/github')
             .then(response => response.json())
             .then(data => {
                 console.log('Ddata', data)
